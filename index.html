@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Eksplorasi Kampus Satu University</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Video Background -->
+  <video id="videoBg" autoplay loop muted playsinline>
+    <source src="assets/video/video_1.mp4" type="video/mp4">
+  </video>
+
+  <header>
+    <h1>🎓 Eksplorasi Kampus Satu University</h1>
+    <p>Temukan kampus impianmu di seluruh Indonesia!</p>
+  </header>
+
+  <main>
+    <div class="cards-container" id="cardsContainer">
+      <!-- Cards akan di-generate di sini -->
+    </div>
+  </main>
+
+  <!-- POPUP DETAIL KAMPUS -->
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <button id="closeBtn">&times;</button>
+      <h2 id="popupNama"></h2>
+      
+      <div class="info-grid" id="infoGrid">
+        <!-- Grid info akan di-generate di sini -->
+      </div>
+
+      <div class="gallery-section">
+        <h3>📸 Galeri Fasilitas</h3>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Gallery akan di-generate di sini -->
+        </div>
+      </div>
+
+      <div class="video-section" id="videoSection" style="display:none; margin-top: 30px;">
+        <h3 style="margin-bottom: 15px;">🎬 Video Eksplorasi Kampus</h3>
+        <div style="border-radius: 14px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.25);">
+          <video id="kampusVideo" autoplay muted loop playsinline disablepictureinpicture controlslist="nodownload noplaybackrate nofullscreen" style="width:100%; display:block; pointer-events: none;">
+            <source src="" type="video/mp4">
+            Browser kamu tidak mendukung tag video.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX untuk Zoom Foto -->
+  <div id="lightbox" class="hidden">
+    <span id="lightboxClose">&times;</span>
+    <img id="lightboxImage" src="" alt="Zoomed Photo">
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>📍 Tentang Kami</h3>
+        <p>SATU UNIVERSITY hadir sebagai wujud komitmen BINUS 2035 untuk memperluas akses pendidikan berkualitas bagi masyarakat Indonesia, dengan menggabungkan pembelajaran berbasis teknologi melalui SATU Connect dan kolaborasi erat dengan sektor industri agar mahasiswa memperoleh pengalaman praktis yang relevan.</p>
+        <p style="margin-top: 15px; font-style: italic; color: #74b9ff;">
+          "Satu Langkah Lebih Maju"
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>📞 Hubungi Kami</h3>
+        <div class="contact-info">
+          <span>📧</span>
+          <a href="mailto:info@satuuniversity.ac.id">info@satu.ac.id</a>
+        </div>
+        <div class="contact-info">
+          <span>☎️</span>
+          <a href="tel:+6282179006668">+62 82179006668</a>
+        </div>
+        <div class="contact-info">
+          <span>💬</span>
+          <a href="https://wa.me/6282179006668" target="_blank">+62 821-7900-6668 (WhatsApp)</a>
+        </div>
+        <div class="contact-info">
+          <span>🌐</span>
+          <a href="https://satu.ac.id/" target="_blank">www.satu.ac.id</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>🔗 Ikuti Kami</h3>
+        <p>Dapatkan update terbaru tentang kampus, beasiswa, dan kegiatan mahasiswa</p>
+        <div class="social-links">
+          <a href="https://instagram.com/satuuniversityofficial" target="_blank" title="Instagram">📷</a>
+          <a href="https://www.facebook.com/satuuniversityofficial/" target="_blank" title="Facebook">📘</a>
+          <a href="https://www.youtube.com/@satuunivofficial" target="_blank" title="YouTube">📹</a>
+          <a href="https://www.linkedin.com/company/satu-university" target="_blank" title="LinkedIn">💼</a>
+          <a href="https://www.tiktok.com/@satuuniversityofficial" target="_blank" title="TikTok">🎵</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 Satu University. All Rights Reserved.</p>
+      <p>Website Design & Development by <span class="creator">Nini Ibet</span> ✨</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
