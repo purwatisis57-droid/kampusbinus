@@ -13,20 +13,22 @@ body {
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
+  background: linear-gradient(180deg, #2a1206 0%, #1a1a1a 100%);
 }
 
-/* Video Background */
 #videoBg {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
   z-index: -2;
+  object-fit: cover;
 }
 
-/* Overlay untuk membuat teks lebih terbaca */
 body::before {
   content: '';
   position: fixed;
@@ -34,24 +36,24 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(108, 92, 231, 0.5);
+  background: rgba(249, 115, 22, 0.5);
   z-index: -1;
 }
 
 header {
-  padding: 50px 20px 30px;
+  padding: 60px 20px 40px;
   color: white;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 header h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
+  font-size: clamp(26px, 4.5vw, 42px);
+  margin-bottom: 12px;
 }
 
 header p {
-  font-size: 22px;
-  margin-bottom: 25px;
+  font-size: clamp(14px, 2vw, 18px);
+  opacity: 0.95;
 }
 
 /* CARDS HORIZONTAL */
@@ -96,7 +98,7 @@ header p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to right, transparent, rgba(108, 92, 231, 0.1));
+  background: linear-gradient(to right, transparent, rgba(249, 115, 22, 0.1));
 }
 
 .card-content {
@@ -110,7 +112,7 @@ header p {
 
 .card-content h3 {
   font-size: 28px;
-  color: #6c5ce7;
+  color: #f97316;
   margin-bottom: 15px;
 }
 
@@ -123,7 +125,7 @@ header p {
 
 .card-tag {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
   color: white;
   padding: 8px 20px;
   border-radius: 20px;
@@ -149,16 +151,41 @@ header p {
 }
 
 .popup-content {
-  background: white;
-  padding: 40px;
+  background: #1a0f08;
   border-radius: 20px;
   width: 95%;
   max-width: 1100px;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow: hidden;
   position: relative;
   animation: slideUp 0.4s ease;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* Video eksplorasi sebagai latar belakang di dalam popup detail */
+.popup-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,15,8,0.88) 0%, rgba(26,15,8,0.93) 100%);
+  z-index: 1;
+}
+
+.popup-scroll {
+  position: relative;
+  z-index: 2;
+  height: 90vh;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
 }
 
 @keyframes slideUp {
@@ -175,10 +202,11 @@ header p {
 .popup-content h2 {
   font-size: 32px;
   margin-bottom: 30px;
-  color: #6c5ce7;
+  color: #fdba74;
   text-align: center;
   padding-bottom: 15px;
-  border-bottom: 3px solid #a29bfe;
+  border-bottom: 3px solid rgba(253, 186, 116, 0.4);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 /* GRID LAYOUT untuk Info */
@@ -190,16 +218,19 @@ header p {
 }
 
 .info-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 15px;
-  border-left: 4px solid #6c5ce7;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-left: 4px solid #f97316;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
 }
 
 .info-card h3 {
   font-size: 18px;
-  color: #6c5ce7;
+  color: #fdba74;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
@@ -209,7 +240,7 @@ header p {
 .info-card p, .info-card ul {
   font-size: 15px;
   line-height: 1.8;
-  color: #2d3436;
+  color: rgba(255,255,255,0.88);
 }
 
 .info-card ul {
@@ -224,15 +255,20 @@ header p {
 }
 
 .info-card li::before {
-  content: "✓";
+  content: "";
   position: absolute;
-  left: 0;
-  color: #6c5ce7;
-  font-weight: bold;
+  left: 3px;
+  top: 14px;
+  width: 4px;
+  height: 8px;
+  border: solid #f97316;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+  opacity: 0.9;
 }
 
 .info-card a {
-  color: #6c5ce7;
+  color: #f97316;
   text-decoration: none;
   font-weight: 600;
   word-break: break-word;
@@ -244,7 +280,7 @@ header p {
 
 /* TESTIMONIAL */
 .testimonial-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
   color: white;
   padding: 25px;
   border-radius: 15px;
@@ -285,30 +321,68 @@ header p {
 
 .gallery-section h3 {
   font-size: 24px;
-  color: #6c5ce7;
+  color: #f97316;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
+  opacity: 0;
+  animation: galleryFadeIn 0.8s ease forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes galleryFadeIn {
+  to { opacity: 1; }
+}
+
+.gallery-track {
+  display: flex;
+  width: max-content;
   gap: 15px;
+  animation: galleryMarquee 28s linear infinite;
+}
+
+/* Jeda saat disentuh/hover supaya nyaman dilihat & diklik */
+.gallery-grid:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+@keyframes galleryMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Varian arah berlawanan untuk section Kegiatan, biar tidak monoton kalau sejajar dengan Galeri */
+.gallery-track-reverse {
+  animation-name: galleryMarqueeReverse;
+}
+
+@keyframes galleryMarqueeReverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 .gallery-item {
   position: relative;
+  flex: 0 0 auto;
+  width: clamp(160px, 22vw, 230px);
+  aspect-ratio: 4/3;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.3s;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  aspect-ratio: 4/3;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .gallery-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  transform: translateY(-4px);
 }
 
 .gallery-item img {
@@ -316,21 +390,43 @@ header p {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.12);
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .gallery-item::after {
-  content: '🔍';
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 40px;
+  width: 34px;
+  height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='M16 16l4.5 4.5M11 8.5v5M8.5 11h5'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: translate(-50%, -50%) scale(0.7);
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
 }
 
 .gallery-item:hover::after {
   opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* LIGHTBOX untuk Zoom */
@@ -376,17 +472,16 @@ header p {
   position: absolute;
   top: 30px;
   right: 40px;
-  font-size: 50px;
   color: white;
   cursor: pointer;
-  background: rgba(255,255,255,0.1);
-  width: 60px;
-  height: 60px;
+  background: rgba(255,255,255,0.08);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid white;
+  border: 1px solid rgba(255,255,255,0.4);
   transition: 0.3s;
 }
 
@@ -399,14 +494,16 @@ header p {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 40px;
+  z-index: 10;
+  font-size: 26px;
   cursor: pointer;
-  color: #d63031;
+  color: white;
   font-weight: bold;
-  background: none;
-  border: none;
-  width: 45px;
-  height: 45px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -415,8 +512,9 @@ header p {
 }
 
 #closeBtn:hover {
-  color: #ff4757;
-  transform: rotate(90deg) scale(1.2);
+  background: #f97316;
+  border-color: #f97316;
+  transform: rotate(90deg) scale(1.1);
 }
 
 /* FOOTER BARU */
@@ -441,7 +539,7 @@ footer {
 .footer-section h3 {
   font-size: 20px;
   margin-bottom: 20px;
-  color: #a29bfe;
+  color: #fdba74;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -458,7 +556,7 @@ footer {
 }
 
 .footer-section a:hover {
-  color: #a29bfe;
+  color: #fdba74;
   padding-left: 5px;
 }
 
@@ -467,33 +565,31 @@ footer {
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
-}
-
-.contact-info span {
-  font-size: 18px;
+  color: rgba(255,255,255,0.85);
 }
 
 .social-links {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-top: 15px;
 }
 
 .social-links a {
-  width: 40px;
-  height: 40px;
-  background: rgba(162, 155, 254, 0.2);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
-  transition: 0.3s;
+  color: rgba(255,255,255,0.75);
+  transition: 0.2s ease;
 }
 
 .social-links a:hover {
-  background: #a29bfe;
-  transform: translateY(-3px);
+  border-color: #f97316;
+  color: #f97316;
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -509,15 +605,15 @@ footer {
 }
 
 .creator {
-  color: #a29bfe;
+  color: #fdba74;
   font-weight: 600;
 }
 
-.popup-content::-webkit-scrollbar {
+.popup-scroll::-webkit-scrollbar {
   width: 8px;
 }
-.popup-content::-webkit-scrollbar-thumb {
-  background: #a29bfe;
+.popup-scroll::-webkit-scrollbar-thumb {
+  background: #fdba74;
   border-radius: 10px;
 }
 
@@ -525,10 +621,6 @@ footer {
 @media (max-width: 968px) {
   .info-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
   
   .footer-content {
@@ -554,11 +646,85 @@ footer {
     min-height: 200px;
   }
   
-  .popup-content {
+  .popup-scroll {
     padding: 25px;
   }
-  
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
 }
+
+/* ===== Ikon minimalis (outline, satu warna) ===== */
+.icon-line {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.social-links .icon-line {
+  width: 18px;
+  height: 18px;
+}
+
+/* Kartu lokasi minimalis (pengganti peta live) */
+.map-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: #fdba74;
+  font-weight: 600;
+  font-size: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.map-card:hover {
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.15);
+}
+.map-card-pin {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.map-card-label {
+  line-height: 1.3;
+}
+
+/* ===== Scroll Reveal (animasi muncul saat discroll) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ===== Ikon garis tipis di judul (menggantikan emoji) ===== */
+.ico {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  vertical-align: -0.16em;
+  margin-right: 8px;
+}
+.card-address {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.card-address .ico {
+  margin-right: 0;
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+  color: #f97316;
+}
+.footer-section h3 .ico {
+  vertical-align: -0.14em;
+}
+
+.info-card h3 .ico, .footer-section h3 .ico { margin-right: 0; }
